@@ -19,6 +19,11 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
+
+	//Kafka 의존성 추가
+	implementation("org.springframework.kafka:spring-kafka")
+	testImplementation("org.springframework.kafka:spring-kafka-test")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
