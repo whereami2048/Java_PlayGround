@@ -8,11 +8,8 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MyConsumer {
-    private static final Logger log = LoggerFactory.getLogger(MyConsumer.class);
     private final KafkaConsumer<String, String> consumer;
 
     public MyConsumer(String url, String groupId, String topic) {
@@ -39,10 +36,8 @@ public class MyConsumer {
                 records.forEach(record -> System.out.println(record.value()));
             }
         } catch (WakeupException e) {
-            System.out.println("일어나");
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }finally {
+            System.err.println("일어나");
+        } finally {
             try {
                 consumer.commitSync();
             }finally {
